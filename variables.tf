@@ -7,17 +7,21 @@ Required:
     - username
 Optional:
     - password
+    - password_key_vault_id (alternative to password - read from Key Vault instead)
+    - password_key_vault_secret_name (alternative to password - read from Key Vault instead)
     - password_wo
     - password_wo_version
 EOT
 
   type = map(object({
-    job_agent_id        = string
-    name                = string
-    username            = string
-    password            = optional(string)
-    password_wo         = optional(string)
-    password_wo_version = optional(number)
+    job_agent_id                   = string
+    name                           = string
+    username                       = string
+    password                       = optional(string)
+    password_key_vault_id          = optional(string)
+    password_key_vault_secret_name = optional(string)
+    password_wo                    = optional(string)
+    password_wo_version            = optional(number)
   }))
   # --- Unconfirmed validation candidates, derived from azurerm_mssql_job_credential's provider source ---
   # Not auto-enabled: either a bespoke provider validator we can't safely translate,
