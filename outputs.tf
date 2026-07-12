@@ -1,3 +1,7 @@
+output "mssql_job_credentials_id" {
+  description = "Map of id values across all mssql_job_credentials, keyed the same as var.mssql_job_credentials"
+  value       = { for k, v in azurerm_mssql_job_credential.mssql_job_credentials : k => v.id }
+}
 output "mssql_job_credentials_job_agent_id" {
   description = "Map of job_agent_id values across all mssql_job_credentials, keyed the same as var.mssql_job_credentials"
   value       = { for k, v in azurerm_mssql_job_credential.mssql_job_credentials : k => v.job_agent_id }
