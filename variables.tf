@@ -23,13 +23,6 @@ EOT
     password_wo                    = optional(string)
     password_wo_version            = optional(number)
   }))
-  # --- Unconfirmed validation candidates, derived from azurerm_mssql_job_credential's provider source ---
-  # Not auto-enabled: either a bespoke provider validator we can't safely translate,
-  # or a path that crosses a list-typed block (needs its own for_each wrapping).
-  # Review, translate into a real validation{} block above, and delete once confirmed.
-  # path: job_agent_id
-  #   source:    [from validate.JobAgentID] !ok
-  # path: job_agent_id
-  #   source:    [from validate.JobAgentID] err != nil
+  # Note: 2 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
